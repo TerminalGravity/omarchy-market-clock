@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "io.github.terminalgravity.market-clock",
+  "name": "Market Clock",
+  "version": "1.0.0",
+  "author": "TerminalGravity",
+  "license": "MIT",
+  "description": "US equity session state (pre-market, open, after-hours, closed) with a countdown to the next bell, from the NYSE holiday and early-close calendar. Runs locally; no network or API key.",
+  "kinds": ["bar-widget"],
+  "entryPoints": {
+    "barWidget": "BarWidget.qml"
+  },
+  "barWidget": {
+    "displayName": "Market Clock",
+    "description": "US equity session and countdown to the next bell",
+    "category": "Info",
+    "allowMultiple": false,
+    "defaultSection": "right",
+    "defaults": {
+      "mode": "countdown",
+      "extendedHours": true,
+      "urgentMinutes": 15,
+      "hideWhenClosed": false
+    },
+    "schema": [
+      { "key": "mode", "type": "enum", "label": "Bar text", "options": ["countdown", "clock"], "defaultValue": "countdown", "description": "Countdown to the next session event, or New York time." },
+      { "key": "extendedHours", "type": "boolean", "label": "Extended hours", "defaultValue": true, "description": "Show pre-market (04:00-09:30 ET) and after-hours (16:00-20:00 ET)." },
+      { "key": "urgentMinutes", "type": "integer", "label": "Highlight before close (minutes)", "min": 0, "max": 120, "step": 5, "defaultValue": 15 },
+      { "key": "hideWhenClosed", "type": "boolean", "label": "Hide when closed", "defaultValue": false }
+    ]
+  }
+}
